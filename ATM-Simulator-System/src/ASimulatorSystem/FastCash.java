@@ -69,7 +69,7 @@ public class FastCash extends JFrame implements ActionListener {
         b7.addActionListener(this);
 
         setSize(960, 1080);
-        setLocation(500, 0);
+        setLocationRelativeTo(null);//setLocation(500, 0);
         setUndecorated(true);
         setVisible(true);
 
@@ -80,15 +80,21 @@ public class FastCash extends JFrame implements ActionListener {
             String amount = ((JButton)ae.getSource()).getText().substring(3); //k
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from bank where pin = '"+pin+"'");
-            int balance = 0;
+            double balance = 0;
             while (rs.next()) {
-                if (rs.getString("mode").equals("Deposit")) {
-                    balance += Integer.parseInt(rs.getString("amount"));
+                if (rs.getString("type").equals("Deposit")) {
+                    balance += Double.parseDouble(rs.getString("amount"));
                 } else {
-                    balance -= Integer.parseInt(rs.getString("amount"));
+                    balance -= Double.parseDouble(rs.getString("amount"));
                 }
             } String num = "17";
-            if (ae.getSource() != b7 && balance < Integer.parseInt(amount)) {
+            if (ae.getSource() != b7 && balance < Double.parseDouble(amount)) {
+                try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Please Check Your Ba.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
                 JOptionPane.showMessageDialog(null, "Insuffient Balance");
                 return;
             }
@@ -99,7 +105,13 @@ public class FastCash extends JFrame implements ActionListener {
             }else{
                 Date date = new Date();
                 c.s.executeUpdate("insert into bank values('"+pin+"', '"+date+"', 'Withdrawl', '"+amount+"')");
-                JOptionPane.showMessageDialog(null, "Rs. "+amount+" Debited Successfully");
+                try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Withdrawal succ.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
+                JOptionPane.showMessageDialog(null, "Rs. "+amount+" Withdrawed Successfully");
                     
                 setVisible(false);
                 new Transactions(pin).setVisible(true);

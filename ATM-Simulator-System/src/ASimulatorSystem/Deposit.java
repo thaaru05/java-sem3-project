@@ -50,7 +50,7 @@ public class Deposit extends JFrame implements ActionListener{
         
         setSize(960,1080);
         setUndecorated(true);
-        setLocation(500,0);
+        setLocationRelativeTo(null);//setLocation(500,0);
         setVisible(true);
     }
     
@@ -64,6 +64,12 @@ public class Deposit extends JFrame implements ActionListener{
                 }else{
                     Conn c1 = new Conn();
                     c1.s.executeUpdate("insert into bank values('"+pin+"', '"+date+"', 'Deposit', '"+amount+"')");
+                    try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Deposited Succe.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
                     JOptionPane.showMessageDialog(null, "Rs. "+amount+" Deposited Successfully");
                     setVisible(false);
                     new Transactions(pin).setVisible(true);

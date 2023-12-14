@@ -69,7 +69,7 @@ public class Pin extends JFrame implements ActionListener{
         l4.add(b2);
         
         setSize(960,1080);
-        setLocation(500,0);
+        setLocationRelativeTo(null);//setLocation(500,0);
         setUndecorated(true);
         setVisible(true);
     
@@ -96,12 +96,17 @@ public class Pin extends JFrame implements ActionListener{
                 Conn c1 = new Conn();
                 String q1 = "update bank set pin = '"+rpin+"' where pin = '"+pin+"' ";
                 String q2 = "update login set pin = '"+rpin+"' where pin = '"+pin+"' ";
-                String q3 = "update signup3 set pin = '"+rpin+"' where pin = '"+pin+"' ";
+                String q3 = "update signupthree set pin = '"+rpin+"' where pin = '"+pin+"' ";
 
                 c1.s.executeUpdate(q1);
                 c1.s.executeUpdate(q2);
                 c1.s.executeUpdate(q3);
-
+                try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Pin Changed Successf.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
                 JOptionPane.showMessageDialog(null, "PIN changed successfully");
                 setVisible(false);
                 new Transactions(rpin).setVisible(true);

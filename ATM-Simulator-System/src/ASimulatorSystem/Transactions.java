@@ -69,7 +69,7 @@ public class Transactions extends JFrame implements ActionListener{
         
         
         setSize(960,1080);
-        setLocation(500,0);
+        setLocationRelativeTo(null);
         setUndecorated(true);
         setVisible(true);
         
@@ -96,6 +96,15 @@ public class Transactions extends JFrame implements ActionListener{
             this.setVisible(false);
             new BalanceEnquiry(pin).setVisible(true);
         }else if(ae.getSource()==b7){ 
+            try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Thank you Please vis.wav");
+                       
+                       //Thread.sleep(5000);
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
+            JOptionPane.showMessageDialog(null, "Thank you");
             System.exit(0);
         }
     }

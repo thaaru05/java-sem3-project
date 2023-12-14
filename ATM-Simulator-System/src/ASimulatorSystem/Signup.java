@@ -125,10 +125,11 @@ public class Signup extends JFrame implements ActionListener{
         r4.setFont(new Font("Raleway", Font.BOLD, 14));
         r4.setBackground(Color.WHITE);
         
+        /*
         r5 = new JRadioButton("Other");
         r5.setFont(new Font("Raleway", Font.BOLD, 14));
         r5.setBackground(Color.WHITE);
-        
+        */
         ButtonGroup groupstatus = new ButtonGroup();
         groupstatus.add(r3);
         groupstatus.add(r4);
@@ -188,9 +189,9 @@ public class Signup extends JFrame implements ActionListener{
         r4.setBounds(450,390,100,30);
         add(r4);
         
-        r5.setBounds(635,390,100,30);
+        /*r5.setBounds(635,390,100,30);
         add(r5);
-        
+        */
         
         
         l9.setBounds(100,440,200,30);
@@ -225,7 +226,7 @@ public class Signup extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         
         setSize(850,800);
-        setLocation(500,120);
+        setLocationRelativeTo(null);//setLocation(500,120);
         setVisible(true);
     }
     
@@ -248,8 +249,6 @@ public class Signup extends JFrame implements ActionListener{
             marital = "Married";
         }else if(r4.isSelected()){ 
             marital = "Unmarried";
-        }else if(r5.isSelected()){ 
-            marital = "Other";
         }
            
         String address = t4.getText();

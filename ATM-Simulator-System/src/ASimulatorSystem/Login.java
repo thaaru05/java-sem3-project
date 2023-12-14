@@ -41,6 +41,8 @@ public class Login extends JFrame implements ActionListener{
         l3.setBounds(125,220,375,30);
         add(l3);
         
+        //5040936011359243
+        
         pf2 = new JPasswordField(15);
         pf2.setFont(new Font("Arial", Font.BOLD, 14));
         pf2.setBounds(300,220,230,30);
@@ -89,13 +91,19 @@ public class Login extends JFrame implements ActionListener{
                 Conn c1 = new Conn();
                 String cardno  = tf1.getText();
                 String pin  = pf2.getText();
-                String q  = "select * from login where cardno = '"+cardno+"' and pin = '"+pin+"'";
+                String q  = "select * from login where cardnumber = '"+cardno+"' and pin = '"+pin+"'";
 
                 ResultSet rs = c1.s.executeQuery(q);
                 if(rs.next()){
                     setVisible(false);
                     new Transactions(pin).setVisible(true);
                 }else{
+                    try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Incorrect Card numbe.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
                     JOptionPane.showMessageDialog(null, "Incorrect Card Number or PIN");
                 }
             }else if(ae.getSource()==b2){

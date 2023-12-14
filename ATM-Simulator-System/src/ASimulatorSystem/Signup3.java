@@ -204,7 +204,7 @@ public class Signup3 extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         
         setSize(850,850);
-        setLocation(500,120);
+        setLocationRelativeTo(null);//setLocation(500,120);
         setVisible(true);
         
         b1.addActionListener(this);
@@ -229,7 +229,6 @@ public class Signup3 extends JFrame implements ActionListener{
         Random ran = new Random();
         long first7 = (ran.nextLong() % 90000000L) + 5040936000000000L;
         String cardno = "" + Math.abs(first7);
-        
         long first3 = (ran.nextLong() % 9000L) + 1000L;
         String pin = "" + Math.abs(first3);
         
@@ -260,10 +259,16 @@ public class Signup3 extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Fill all the required fields");
                 }else{
                     Conn c1 = new Conn();
-                    String q1 = "insert into signup3 values('"+formno+"','"+atype+"','"+cardno+"','"+pin+"','"+facility+"')";  
+                    String q1 = "insert into signupthree values('"+formno+"','"+atype+"','"+cardno+"','"+pin+"','"+facility+"')";  
                     String q2 = "insert into login values('"+formno+"','"+cardno+"','"+pin+"')";
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
+                    try{
+                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Account created succ.wav");
+                    }
+                    catch (Exception  e){
+                        System.out.println(e);
+                    }
                     JOptionPane.showMessageDialog(null, "Card Number: " + cardno + "\n Pin:"+ pin);
                     
                     new Deposit(pin).setVisible(true);
@@ -271,6 +276,11 @@ public class Signup3 extends JFrame implements ActionListener{
                 }
             
             }else if(ae.getSource()==b2){
+                Conn c1 = new Conn();
+                    String q1 = "delete from signuptwo where formno='"+formno+"'";  
+                    String q2 = "delete from signup where formno='"+formno+"'";
+                    c1.s.executeUpdate(q1);
+                    c1.s.executeUpdate(q2);
                 System.exit(0);
             }
             
