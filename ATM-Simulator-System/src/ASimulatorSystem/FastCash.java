@@ -2,6 +2,8 @@ package ASimulatorSystem;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.sql.*;
 import java.util.Date;
@@ -90,7 +92,9 @@ public class FastCash extends JFrame implements ActionListener {
             } String num = "17";
             if (ae.getSource() != b7 && balance < Double.parseDouble(amount)) {
                 try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Please Check Your Ba.wav");
+                    Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Please Check Your Ba.wav");
+//new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Please Check Your Ba.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);
@@ -106,7 +110,9 @@ public class FastCash extends JFrame implements ActionListener {
                 Date date = new Date();
                 c.s.executeUpdate("insert into bank values('"+pin+"', '"+date+"', 'Withdrawl', '"+amount+"')");
                 try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Withdrawal succ.wav");
+                                         Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Cash Withdrawal succ.wav");
+                    //new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Withdrawal succ.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);

@@ -2,6 +2,8 @@ package ASimulatorSystem;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.sql.*;
 
@@ -97,7 +99,10 @@ public class Transactions extends JFrame implements ActionListener{
             new BalanceEnquiry(pin).setVisible(true);
         }else if(ae.getSource()==b7){ 
             try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Thank you Please vis.wav");
+                Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Thank you Please vis.wav");
+
+                       //new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Thank you Please vis.wav");
                        
                        //Thread.sleep(5000);
                     }

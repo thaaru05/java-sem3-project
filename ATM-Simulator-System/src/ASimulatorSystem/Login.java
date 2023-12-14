@@ -1,5 +1,5 @@
 package ASimulatorSystem;
-
+import java.nio.file.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -81,7 +81,7 @@ public class Login extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         
         setSize(800,480);
-        setLocation(550,200);
+        setLocationRelativeTo(null);//setLocation(550,200);
         setVisible(true);
         
     }
@@ -99,7 +99,10 @@ public class Login extends JFrame implements ActionListener{
                     new Transactions(pin).setVisible(true);
                 }else{
                     try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Incorrect Card numbe.wav");
+                        Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Incorrect Card numbe.wav");
+
+                       //new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Incorrect Card numbe.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);

@@ -3,6 +3,8 @@ package ASimulatorSystem;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.util.*;
 
@@ -65,7 +67,10 @@ public class Deposit extends JFrame implements ActionListener{
                     Conn c1 = new Conn();
                     c1.s.executeUpdate("insert into bank values('"+pin+"', '"+date+"', 'Deposit', '"+amount+"')");
                     try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Deposited Succe.wav");
+                        Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Cash Deposited Succe.wav");
+
+                       //new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Cash Deposited Succe.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);

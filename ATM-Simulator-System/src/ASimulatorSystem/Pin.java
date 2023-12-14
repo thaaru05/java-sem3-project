@@ -3,6 +3,8 @@ package ASimulatorSystem;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.sql.*;
 
@@ -102,7 +104,10 @@ public class Pin extends JFrame implements ActionListener{
                 c1.s.executeUpdate(q2);
                 c1.s.executeUpdate(q3);
                 try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Pin Changed Successf.wav");
+                    Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Pin Changed Successf.wav");
+   
+                      // new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Pin Changed Successf.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);

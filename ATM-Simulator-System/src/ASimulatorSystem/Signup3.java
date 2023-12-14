@@ -3,6 +3,8 @@ package ASimulatorSystem;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 import java.sql.*;
 import java.util.*;
@@ -264,7 +266,10 @@ public class Signup3 extends JFrame implements ActionListener{
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     try{
-                       new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Account created succ.wav");
+                         Path currentReletivePath=Paths.get("");
+                        new Audio(currentReletivePath.toAbsolutePath().toString()+"\\src\\ASimulatorSystem\\Account created succ.wav");
+   
+                       //new Audio("C:\\Users\\Thaaarushri\\ATM-Simulator-System\\ATM-Simulator-System\\src\\ASimulatorSystem\\Account created succ.wav");
                     }
                     catch (Exception  e){
                         System.out.println(e);
